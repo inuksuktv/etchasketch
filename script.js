@@ -7,6 +7,24 @@ function hover() {
     this.style.backgroundColor = getRandomHexColor();
 }
 
+function reset() {
+    const newSize = prompt("Enter how many squares should be on a side (max 100): ")
+    squares.forEach(square => {
+        square.remove();
+    })
+    for (i = 0; i < newSize; i++) {
+        for (j = 0; j < newSize; j++) {
+            const newSquare = document.createElement('div');
+            newSquare.classList.add('square');
+            container.appendChild(newSquare);
+        }
+    }
+    squares = document.querySelectorAll(".square");
+    squares.forEach(square => {
+        square.addEventListener("mouseover", hover);
+    })
+}
+
 const container = document.querySelector(".container");
 
 for (i = 0; i < 16; i++) {
@@ -17,8 +35,11 @@ for (i = 0; i < 16; i++) {
     }
 }
 
-const squares = document.querySelectorAll(".square");
+let squares = document.querySelectorAll(".square");
 
 squares.forEach(square => {
     square.addEventListener("mouseover", hover);
 });
+
+const button = document.querySelector("button");
+button.addEventListener("click", reset);
