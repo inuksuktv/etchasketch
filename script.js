@@ -1,11 +1,10 @@
 function getRandomHexColor() {
-    const randomValue = Math.floor(Math.random() * (16777215 ^ 3));
+    const randomValue = Math.floor(Math.random() * 16777215);
     return "#" + randomValue.toString(16).padStart(6, '0');
  }
 
 function hover() {
-    const randomColor = getRandomHexColor();
-    this.style.backgroundColor = randomColor;
+    this.style.backgroundColor = getRandomHexColor();
 }
 
 const container = document.querySelector(".container");
