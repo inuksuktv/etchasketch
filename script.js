@@ -19,10 +19,18 @@ function reset() {
             container.appendChild(newSquare);
         }
     }
+
+    const containerWidth = container.offsetWidth;
+    const remainder = containerWidth - (newSize * 2);
+    const length = Math.floor(remainder / newSize);
+
     squares = document.querySelectorAll(".square");
     squares.forEach(square => {
+        square.style.width = length + "px";
+        square.style.height = length + "px";
         square.addEventListener("mouseover", hover);
     })
+
 }
 
 const container = document.querySelector(".container");
